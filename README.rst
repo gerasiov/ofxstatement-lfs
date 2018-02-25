@@ -5,11 +5,11 @@ ofxstatement-lfs
 ================
 
 This is a collection of parsers for proprietary statement formats, produced by
-`Lansforsakringar`_. It parses ``Kontoutdrag.xls`` file exported from internet bank.
+`Länsförsäkringar`_. It parses ``Kontoutdrag.xls`` file exported from internet bank.
 
 It is a plugin for `ofxstatement`_.
 
-.. _Lansforsakringar: https://www.lansforsakringar.se
+.. _Länsförsäkringar: https://www.lansforsakringar.se
 .. _ofxstatement: https://github.com/kedder/ofxstatement
 
 It is possible to use this plugin as a docker container. Instructions are `here <./DOCKER.rst>`_.
@@ -17,7 +17,7 @@ It is possible to use this plugin as a docker container. Instructions are `here 
 Input
 =====
 
-Lansforsakringar doesn't export account id in the statement. This means you need to explicitly provide it during
+Länsförsäkringar doesn't export account id in the statement. This means you need to explicitly provide it during
 parsing as otherwise you get a blank account id. You can either provide it via env variable ``OFX_ACCOUNT_ID`` or
 it will be asked during parsing automatically.
 
