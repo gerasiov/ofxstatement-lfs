@@ -32,4 +32,4 @@ You can change default configuration if you want, here are the defaults:
     plugin = lfs
     locale = sv_SE
     bank_id = LFS
-    currency_id = SEK
+    currency = SEK

@@ -43,7 +43,7 @@ class LfsStatementParser(StatementParser):
         '^Datum: ([0-9]{4}-[0-9]{2}-[0-9]{2}) - ([0-9]{4}-[0-9]{2}-[0-9]{2})$'
     ]
 
-    def __init__(self, fin, locale=None, account_id=None, bank_id=None, currency_id=None):
+    def __init__(self, fin, locale=None, account_id=None, bank_id=None, currency=None):
         """
         Create a new LfsStatementParser instance.
 
@@ -58,14 +58,14 @@ class LfsStatementParser(StatementParser):
             bank_id = input("Bank ID:")
         assert bank_id
 
-        if currency_id is None:
-            currency_id = input("Currency ID:")
-        assert currency_id
+        if currency is None:
+            currency = input("Currency:")
+        assert currency
 
         self.locale = locale
         self.account_id = account_id
         self.bank_id = bank_id
-        self.currency_id = currency_id
+        self.currency = currency
 
         self.workbook = open_workbook(filename=fin)
         self.sheet = self.workbook.sheet_by_index(0)
@@ -125,7 +125,7 @@ class LfsStatementParser(StatementParser):
 
         statement.account_id = self.account_id
         statement.bank_id = self.bank_id
-        statement.currency = self.currency_id
+        statement.currency = self.currency
 
         rows = self.sheet_rows()
         for r in rows[2:]:
@@ -184,7 +184,7 @@ class LfsPlugin(Plugin):
             'locale': 'sv_SE',
             'account_id': None,
             'bank_id': 'LFS',
-            'currency_id': 'SEK',
+            'currency': 'SEK',
         }
 
         # overwrite from settings
@@ -195,8 +195,8 @@ class LfsPlugin(Plugin):
                 kwargs['account_id'] = self.settings.get('account_id')
             if 'bank_id' in self.settings:
                 kwargs['bank_id'] = self.settings.get('bank_id')
-            if 'currency_id' in self.settings:
-                kwargs['currency_id'] = self.settings.get('currency_id')
+            if 'currency' in self.settings:
+                kwargs['currency'] = self.settings.get('currency')
 
         # overwrite from env
         for k, v in kwargs.items():
