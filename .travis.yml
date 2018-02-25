@@ -1,0 +1,9 @@
+language: python
+python: 3.6
+script:
+  - make dist
+  - make install
+notifications:
+  email:
+    on_success: change
+    on_failure: change

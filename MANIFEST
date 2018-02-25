@@ -1,0 +1,5 @@
+README.rst
+setup.py
+ofxstatement/__init__.py
+ofxstatement/plugins/__init__.py
+ofxstatement/plugins/lfs.py
